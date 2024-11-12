@@ -5,12 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import router from './routers';
+import axios from 'axios';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
+
+axios.defaults.baseURL = "https://api.themoviedb.org/3"
+axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`
+// axios.defaults.params = {
+//   api_key: "36e73802fd12a45dcadb7341ef79340d", // Thay bằng API key của bạn
+// };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+//<React.StrictMode>
+  <Provider store={store}>
+        <RouterProvider router={router} />
+  </Provider>
+
+  //</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

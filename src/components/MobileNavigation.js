@@ -9,7 +9,10 @@ const MobileNavigation = () => {
             {
                 mobileNavigation.map((nav, index) => {
                     return(
-                        <NavLink key={nav.label + "mobilenavigation"} className={({isActive}) => `px-3 flex h-full items-center flex-col justify-center ${isActive && "text-white"}`}>
+                        <NavLink 
+                            key={nav.label + "mobilenavigation"} 
+                            to={nav.href}
+                            className={({isActive}) => `px-3 flex h-full items-center flex-col justify-center ${isActive && "text-white"}`}>
                             <div className='text-2xl'>
                                 {nav.icon}
                             </div>
